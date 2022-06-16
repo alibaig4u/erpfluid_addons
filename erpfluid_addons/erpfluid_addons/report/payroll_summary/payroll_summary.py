@@ -86,7 +86,7 @@ def get_data(filters):
 				company,
 				department,
 				sum(gross_pay) as gross_pay,
-				0 as total_earning,
+				sum(basic_custom) as total_earning,
 				sum(total_deduction) as total_deduction,
 				sum(net_pay) as net_pay
 		FROM  
