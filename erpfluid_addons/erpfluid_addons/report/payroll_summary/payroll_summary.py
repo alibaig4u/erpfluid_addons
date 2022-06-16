@@ -109,7 +109,7 @@ def get_data(filters):
 		if cur_company == "":
 			data.append({
 				'company':l.company,
-				'department':l.deparment,
+				'department':l.department,
 				'gross_pay':l.gross_pay,
 				'total_earning':l.total_earning,
 				'total_deduction':l.total_deduction,
@@ -127,7 +127,7 @@ def get_data(filters):
 
 		elif cur_company != l.company:
 			data.append({
-				'company':"<b>TOTAL</b>",
+				'department':"<b>TOTAL</b>",
 				'gross_pay': gross_pay,
 				'total_earning': total_earning,
 				'total_deduction': total_deduction,
@@ -141,7 +141,7 @@ def get_data(filters):
 			
 			data.append({
 					'company':l.company,
-					'department':l.deparment,
+					'department':l.department,
 					'total_earning': l.total_earning,
 					'gross_pay':l.gross_pay,
 					'total_deduction':l.total_deduction,
@@ -159,7 +159,7 @@ def get_data(filters):
 		else:
 			data.append({
 					'company':l.company,
-					'department':l.deparment,
+					'department':l.department,
 					'total_earning': l.total_earning,
 					'gross_pay':l.gross_pay,
 					'total_deduction':l.total_deduction,
@@ -175,14 +175,14 @@ def get_data(filters):
 			g_net_pay += l.net_pay
 
 	data.append({
-				'company':"<b>TOTAL</b>",
+				'department':"<b>TOTAL</b>",
 				'gross_pay': gross_pay,
 				'total_earning': total_earning,
 				'total_deduction': total_deduction,
 				'net_pay': net_pay
 			})
 	data.append({
-				'company':"<b>GRAND TOTAL</b>",
+				'department':"<b>GRAND TOTAL</b>",
 				'gross_pay': g_gross_pay,
 				'total_earning': g_total_earning,
 				'total_deduction': g_total_deduction,
