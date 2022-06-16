@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include erpfluid_addons *.css
+recursive-include erpfluid_addons *.csv
+recursive-include erpfluid_addons *.html
+recursive-include erpfluid_addons *.ico
+recursive-include erpfluid_addons *.js
+recursive-include erpfluid_addons *.json
+recursive-include erpfluid_addons *.md
+recursive-include erpfluid_addons *.png
+recursive-include erpfluid_addons *.py
+recursive-include erpfluid_addons *.svg
+recursive-include erpfluid_addons *.txt
+recursive-exclude erpfluid_addons *.pyc
