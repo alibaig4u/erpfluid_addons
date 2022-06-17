@@ -64,9 +64,9 @@ def get_columns(filters):
 def get_conditions(filters=None):
 	conditions = ""
 	if filters.get('company') is not None:
-		conditions += "tss.company = '{}' and ".format(filters.get('orderno'))
+		conditions += "tss.company = '{}' and ".format(filters.get('company'))
 	if filters.get('department') is not None:
-		conditions += "tss.department = '{}' and ".format(filters.get('company'))
+		conditions += "tss.department = '{}' and ".format(filters.get('department'))
 	if filters.get('date') is not None:
 		conditions += "tss.posting_date between '{}' and '{}' and ".format(filters.get('date')[0], filters.get('date')[1])
 	conditions = conditions.strip("and ")
