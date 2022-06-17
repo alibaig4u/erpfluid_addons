@@ -61,20 +61,17 @@ def get_columns(filters):
 
 	return columns
 
-def get_conditions(filters):
+def get_conditions(filters=None):
 	conditions = ""
-
-	if filters.get("company"):
-		conditions += " AND parent.company=%s" % frappe.db.escape(filters.get("company"))
-
-	# if filters.get("department"):
-	# 	conditions += "AND parent.department=%s" % frappe.db.escape(filters.get("department"))
-
-	# if filters.get("from_date"):
-	# 	conditions += " where parent.posting_date>='%s'" % filters.get("from_date")
-
-	# if filters.get("to_date"):
-	# 	conditions += " AND parent.posting_date<='%s'" % filters.get("to_date")
+	if filters.get('company') is not None:
+		conditions += "tss.company = '{}' and ".format(filters.get('orderno'))
+	if filters.get('department') is not None:
+		conditions += "tss.department = '{}' and ".format(filters.get('company'))
+	if filters.get('date') is not None:
+		conditions += "tss.posting_date between '{}' and '{}' and ".format(filters.get('date')[0], filters.get('date')[1])
+	conditions = conditions.strip("and ")
+	if conditions != "":
+		conditions = "where " + conditions
 	return conditions
 
 def get_data(filters):
@@ -91,9 +88,10 @@ def get_data(filters):
 				sum(net_pay) as net_pay
 		FROM  
 		  		`tabSalary Slip` tss
+				{}
 		group by 
 		   		tss.company , tss.department 
-				""",as_dict=True
+				""".format(conditions),as_dict=True
 		)
 
 	cur_company = ""
