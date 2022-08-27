@@ -45,12 +45,6 @@ def get_columns(filters):
 			"width": 140,
 		},
 		{
-			"label": _("Total deduction"),
-			"fieldname": "total_deduction",
-			"fieldtype": "Currency",
-			"width": 140,
-		},
-		{
 			"label": _("Net Pay"),
 			"fieldname": "net_pay",
 			"fieldtype": "Currency",
@@ -63,6 +57,17 @@ def get_columns(filters):
 
 def get_conditions(filters=None):
 	conditions = ""
+	departments = frappe.get_list('Employee', fields=["department"])
+	dept_arr = []
+	dept = ""
+	for x in departments:
+		if x.department not in dept_arr:
+			dept_arr.append(x.department)
+	for x in dept_arr:
+		dept += "'{}',".format(x)
+	dept = dept.strip(',')
+	if dept != "":
+		conditions += "tss.department in ({}) and ".format(dept)
 	if filters.get('company') is not None:
 		conditions += "tss.company = '{}' and ".format(filters.get('company'))
 	if filters.get('department') is not None:
@@ -77,8 +82,8 @@ def get_conditions(filters=None):
 def get_data(filters):
 	conditions = get_conditions(filters)
 	data =[]
-	sql = frappe.db.sql(
-			"""
+
+	sql = """
 		SELECT 
 				company,
 				department,
@@ -91,9 +96,15 @@ def get_data(filters):
 				{}
 		group by 
 		   		tss.company , tss.department 
-				""".format(conditions),as_dict=True
-		)
+				""".format(conditions)
+	# frappe.msgprint(sql)
 
+	departments = frappe.get_list('Department')
+	if len(departments) > 0:
+		sql = frappe.db.sql(sql,as_dict=True)
+	else:
+		frappe.msgprint("No Department Permission")
+		sql = []
 	cur_company = ""
 	gross_pay = 0
 	total_earning = 0
@@ -172,20 +183,21 @@ def get_data(filters):
 			g_total_deduction += l.total_deduction
 			g_net_pay += l.net_pay
 
-	data.append({
-				'department':"<b>TOTAL</b>",
-				'gross_pay': gross_pay,
-				'total_earning': total_earning,
-				'total_deduction': total_deduction,
-				'net_pay': net_pay
-			})
-	data.append({
-				'department':"<b>GRAND TOTAL</b>",
-				'gross_pay': g_gross_pay,
-				'total_earning': g_total_earning,
-				'total_deduction': g_total_deduction,
-				'net_pay': g_net_pay
-			})
+	if len(sql) > 0:
+		data.append({
+					'department':"<b>TOTAL</b>",
+					'gross_pay': gross_pay,
+					'total_earning': total_earning,
+					'total_deduction': total_deduction,
+					'net_pay': net_pay
+				})
+		data.append({
+					'department':"<b>GRAND TOTAL</b>",
+					'gross_pay': g_gross_pay,
+					'total_earning': g_total_earning,
+					'total_deduction': g_total_deduction,
+					'net_pay': g_net_pay
+				})
 	return data
 
 

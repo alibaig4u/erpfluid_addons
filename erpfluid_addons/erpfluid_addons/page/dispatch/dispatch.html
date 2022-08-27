@@ -1,0 +1,34 @@
+<div class="col-md-12 container">
+  <h1 class="heading_size">Dispatch</h1>
+  <div class="filter_section">
+    <div class="col-md-2 client_control"></div>
+    <div class="col-md-2 client_type_control"></div>
+    <div class="col-md-2 mop_control"></div>
+    <div class="col-md-2 date_control"></div>
+    <button id="filter_btn" style="display: none;"></button>
+  </div>
+  <div class="row"></div>
+  <div class="col-md-12">
+    <table id="datatable" 
+    data-pagination="true" 
+    data-pagination-pre-text="Previous" 
+    data-pagination-next-text="Next"
+    data-toggle="table"
+    data-height="530">
+      <thead class="table-head">
+        <tr>
+          <th data-field="ticket_no" data-sortable="true" data-visible="false">Ticket No</th>
+          <th data-field="cust_type" data-sortable="true">Customer Type</th>
+          <th data-field="client_title" data-sortable="true">Client Title</th>
+          <th data-field="cell_no" data-sortable="true">Cell No</th>
+          <th data-field="delivery_address" data-sortable="true">Delivery Address</th>
+          <th data-field="rate_unit" data-sortable="true">Rate Unit</th>
+          <th data-field="delivery_date" data-sortable="true">Delivery Date</th>
+          <th data-field="mop" data-sortable="true">Mode of Payments</th>
+          <th data-field="qty" data-sortable="true">Reg Qty Bottles</th>
+          <th data-field="dispatch" data-sortable="true">Dispatch</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>

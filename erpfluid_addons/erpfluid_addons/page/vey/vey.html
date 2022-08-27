@@ -1,0 +1,115 @@
+<div class="col-md-12 container">
+  <div class="nav" style="margin-bottom:25px !important;">
+    <div class="col-md-2">
+      <img src="/files/Vey-Forever.png" alt="Italian Trulli" class="logo" height="80px" width="150px">
+    </div>
+    <div class="col-md-8" style="text-align: center;">
+      <h1 style="font-weight: bold;">WELCOME TO VEY WATER CUSTOMER POTAL</h1>
+    </div>
+    <div class="col-md-2" style="text-align: right; position-relative">
+      <button  type="button" id="complain" style="margin-top: 20px;"class="btn btn-danger">New Complain</button>
+    </div>
+  </div>
+  
+  <div class="row">
+
+    <div class="col-md-4">
+      <table style="width:100%" >
+        <tr>
+          <th>CUSTOMER ID</th>
+          <td id="customer"></td>
+        </tr>
+        <tr>
+          <th>CONTACT NAME</th>
+          <td id="customer_name"></td>
+        </tr>
+        <tr>
+          <th>CONTACT</th>
+          <td id="contact"></td>
+        </tr>
+        <tr>
+            <th>DELIVERY SCHEDULE</th>
+            <td id="delivery_schedule"></td>
+          </tr>
+          <tr>
+            <th>AGREEMENT DATE</th>
+            <td id="agreement_date"></td>
+          </tr>
+          <tr>
+            <th>BOTTLES TO DELIVER</th>
+            <td id="bottle_to_delivery"></td>
+          </tr>
+          <tr>
+            <th>BOTTLES RATE</th>
+            <td id="bottle_rates"></td>
+          </tr>
+      </table>
+    </div>
+
+    <div class="col-md-8">
+      <div class="col-md-4">
+        <div class="card text-white bg-success mb-3"> 
+          <div class="card-header">Available coupon</div> 
+          <div class="card-body"> 
+            <p class="card-text" id="available_coupon"></p>
+          </div> 
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card text-white bg-info mb-3"> 
+          <div class="card-header">Outstanding Balance</div> 
+          <div class="card-body"> 
+            <p class="card-text" id="total_outstanding_amount"></p>
+          </div> 
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card text-white bg-secondary mb-3"> 
+          <div class="card-header">Total Delivery</div> 
+          <div class="card-body"> 
+            <p class="card-text" id="total_deliveries"></p>
+          </div> 
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table" id="datatable"
+    data-pagination="true" 
+    data-pagination-pre-text="Previous" 
+    data-pagination-next-text="Next"
+    data-toggle="table"
+    data-height="300">
+      <thead class="table-head">
+        <tr>
+          <th data-field="date"
+          data-sortable="true" >Date</th>
+          <th data-field="day" >Day</th>
+          <th data-field="ticket_no">Ticket No</th>
+          <th data-field="quantity"
+          data-sortable="true">Quantity</th>
+          <th data-field="empty_bottles"
+          data-sortable="true">Empty Bottles</th>
+          <th data-field="received_payment">Recieved Payments</th>
+          <th data-field="remarks">Remarks</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="row">
+    <h1 style="font-weight: bold;text-align: center;">Customer Complaint Logs</h1>
+    <table class="table" id="log_datatable">
+      <thead class="table-head">
+        <tr>
+          <th data-field="id">Complaint ID</th>
+          <th data-field="date">Date</th>
+          <th data-field="comment">Comment</th>
+          <th data-field="status">STATUS</th>
+          <th data-field="resolved_date">Resolved Date</th>
+        </tr>
+    </table>
+  </div>
+</div>
+      <!-- 
+      <textarea id="complaintlogs" name="complaintlogs" placeholder="Write Comments" style="height:200px"></textarea>   -->
+ 
