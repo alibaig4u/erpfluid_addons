@@ -15,15 +15,18 @@ app_license = "MIT"
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/erpfluid_addons/css/erpfluid_addons.css"
-# app_include_js = "/assets/erpfluid_addons/js/erpfluid_addons.js"
-
+app_include_css = [
+	"/assets/erpfluid_addons/css/bootstrap-table.min.css"
+	]
+app_include_js = [
+	"/assets/erpfluid_addons/js/bootstrap-table.min.js",
+]
 # include js, css files in header of web template
-# web_include_css = "/assets/erpfluid_addons/css/erpfluid_addons.css"
-# web_include_js = "/assets/erpfluid_addons/js/erpfluid_addons.js"
+# web_include_css = "/assets/fm_addons/css/fm_addons.css"
+# web_include_js = "/assets/fm_addons/js/fm_addons.js"
 
 # include js in page
-# page_js = {"page" : "public/js/file.js"}
+page_js = {"dispatch" : "public/js/echarts.min.js"}
 
 # include js in doctype views
 # doctype_js = {"doctype" : "public/js/doctype.js"}

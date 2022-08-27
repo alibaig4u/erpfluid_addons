@@ -49,7 +49,6 @@ def execute(filters=None):
 			emp_det.company, 'Gazette']
 
 
-		
 		g_total_hours = 0.0
 		total_hours = 0.0
 		total_p = 0.0
@@ -57,30 +56,13 @@ def execute(filters=None):
 		gazzete_amount = 0.0
 		non_gazzete_amount = 0.0
 		for day in range(filters["total_days_in_month"]):
-			# ot = random.randint(0, 1)
-			ot = 0
-			emp_att = frappe.db.sql("""select DISTINCT 
-					tea.employee,
-					teat.date,
-					teat.approved_ot1,
-					teat.holiday
-				from 
-				`tabEmployee Attendance` tea
-				left join
-				`tabEmployee Attendance Table` teat
-				on teat.parent = tea.name
-				where 
-				day(teat.date) = '{day}' and month(teat.date) = '{month}' and year(teat.date) = '{year}' and tea.employee='{employee}' """.format(day=day,month=filters.get('month'), year=filters.get('year'), employee=emp), as_dict=1)
-			if len(emp_att) > 0:
-				if emp_att[0].holiday == 1:
-					ot = emp_att[0].approved_ot1
 	# 		status = att_map.get(emp).get(day + 1, "None")
 	# 		status_map = {"Present": "P", "Absent": "A", "Half Day": "HD", "On Leave": "L", "None": "", "Holiday":"<b>H</b>"}
 	# 		if status == "None" and holiday_map:
 	# 			emp_holiday_list = emp_det.holiday_list if emp_det.holiday_list else default_holiday_list
 	# 			if emp_holiday_list in holiday_map and (day+1) in holiday_map[emp_holiday_list]:
 	# 				status = "Holiday"
-			
+			ot = random.randint(0, 1)
 			total_hours += ot
 			g_total_hours += ot
 			if ot > 0:
@@ -101,23 +83,7 @@ def execute(filters=None):
 		total_p = 0.0
 		for day in range(filters["total_days_in_month"]):
 
-			# ot = random.randint(0, 1)
-			ot = 0
-			emp_att = frappe.db.sql("""select DISTINCT 
-					tea.employee,
-					teat.date,
-					teat.approved_ot1,
-					teat.holiday
-				from 
-				`tabEmployee Attendance` tea
-				left join
-				`tabEmployee Attendance Table` teat
-				on teat.parent = tea.name
-				where 
-				day(teat.date) = '{day}' and month(teat.date) = '{month}' and year(teat.date) = '{year}' and tea.employee='{employee}' """.format(day=day,month=filters.get('month'), year=filters.get('year'), employee=emp), as_dict=1)
-			if len(emp_att) > 0:
-				if emp_att[0].holiday == 0:
-					ot = emp_att[0].approved_ot1
+			ot = random.randint(0, 1)
 			total_hours += ot
 			g_total_hours += ot
 			if ot > 0:
