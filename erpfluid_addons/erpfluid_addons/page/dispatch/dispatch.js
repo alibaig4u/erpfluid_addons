@@ -115,179 +115,226 @@ frappe.si_list = {
 			data: data,
 			onClickRow: function(row, $element, field){
 				debugger;
-				var new_customer = 1
-				if(row.new_customer == 'Yes'){
-					new_customer = 0
-				}
-				var d = new frappe.ui.Dialog({
-		            'title': 'Dispatch Order',
-		            'fields': [
-		                {
-		                    'label': 'Account No',
-		                    'fieldname': 'account_no',
-		                    'fieldtype': 'Data',
-		                    'read_only': 1,
-		                    'hidden':1
-		                },
-		                {
-		                    'label': 'Ticket No',
-		                    'fieldname': 'ticket_no',
-		                    'fieldtype': 'Data',
-		                    'read_only': 1,
-		                    'hidden':1
-		                },
-		                {
-		                    'label': 'Customer Type',
-		                    'fieldname': 'cust_type',
-		                    'fieldtype': 'Data',
-		                    'read_only': 1,
-		                    'hidden':1
-		                },
-		                {
-		                    'label': 'Customer',
-		                    'fieldname': 'client_title',
-		                    'fieldtype': 'Data',
-		                    'read_only': 1
-		                },
-		                {
-		                    'label': 'Cell No',
-		                    'fieldname': 'cell_no',
-		                    'fieldtype': 'Data',
-		                    'read_only': 1,
-		                    'hidden':1
-		                },
-		                {
-		                    'label': 'Delivery Address',
-		                    'fieldname': 'delivery_address',
-		                    'fieldtype': 'Data',
-		                    'read_only': 1
-		                },
-		                {
-		                    'label': "Reason",
-		                    'fieldname': 'reason',
-		                    'fieldtype': 'Link',
-		                    'options': 'Dispatch Reason'
-		                },
-		                {
-		                    'label': 'Rate Unit',
-		                    'fieldname': 'rate_unit',
-		                    'fieldtype': 'Data',
-		                    'read_only': 1,
-		                    'hidden':1
-		                },
-		                {
-		                    'label': 'Delivery Date',
-		                    'fieldname': 'delivery_date',
-		                    'fieldtype': 'Date',
-		                    'read_only': 1,
-		                    'hidden':1
-		                },
-						{
-		                    'label': "Dispatch Register",
-		                    'fieldname': 'reg_qty',
-		                    'fieldtype': 'Int',
-		                    'read_only': 1,
-		                },
-		                {
-		                    'label': "Dispatch Qty",
-		                    'fieldname': 'qty',
-		                    'fieldtype': 'Int',
-		                },
-		                {
-		                    'label': "Empty Bottles",
-		                    'fieldname': 'empty_qty',
-		                    'fieldtype': 'Int',
-		                },
-		                {
-		                    'label': "Payment Received",
-		                    'fieldname': 'received_amount',
-		                    'fieldtype': 'Currency',
-		                },
-		                {
-		                    'label': 'Mode of Payment',
-		                    'fieldname': 'mop',
-		                    'fieldtype': 'Data',
-		                    'read_only': 1
-		                },
-						{
-		                    'label': "Accessories Sale",
-		                    'fieldname': 'accessories_sales',
-		                    'fieldtype': 'Currency',
-		                    'read_only': new_customer
-		                },
-						
-						{
-		                    'label': "Fixed Deposit",
-		                    'fieldname': 'fixed_deposit',
-		                    'fieldtype': 'Currency',
-		                },
+				if(field == 'dispatch'){
+					var new_customer = 1
+					if(row.new_customer == 'Yes'){
+						new_customer = 0
+					}
+					var d = new frappe.ui.Dialog({
+						'title': 'Dispatch Order',
+						'fields': [
+							{
+								'label': 'Account No',
+								'fieldname': 'account_no',
+								'fieldtype': 'Data',
+								'read_only': 1,
+								'hidden':1
+							},
+							{
+								'label': 'Ticket No',
+								'fieldname': 'ticket_no',
+								'fieldtype': 'Data',
+								'read_only': 1,
+								'hidden':1
+							},
+							{
+								'label': 'Customer Type',
+								'fieldname': 'cust_type',
+								'fieldtype': 'Data',
+								'read_only': 1,
+								'hidden':1
+							},
+							{
+								'label': 'Customer',
+								'fieldname': 'client_title',
+								'fieldtype': 'Data',
+								'read_only': 1
+							},
+							{
+								'label': 'Cell No',
+								'fieldname': 'cell_no',
+								'fieldtype': 'Data',
+								'read_only': 1,
+								'hidden':1
+							},
+							{
+								'label': 'Delivery Address',
+								'fieldname': 'delivery_address',
+								'fieldtype': 'Data',
+								'read_only': 1
+							},
+							{
+								'label': "Reason",
+								'fieldname': 'reason',
+								'fieldtype': 'Link',
+								'options': 'Dispatch Reason'
+							},
+							{
+								'label': 'Rate Unit',
+								'fieldname': 'rate_unit',
+								'fieldtype': 'Data',
+								'read_only': 1,
+								'hidden':1
+							},
+							{
+								'label': 'Delivery Date',
+								'fieldname': 'delivery_date',
+								'fieldtype': 'Date',
+								'read_only': 1,
+								'hidden':1
+							},
+							{
+								'label': "Dispatch Register",
+								'fieldname': 'reg_qty',
+								'fieldtype': 'Int',
+								'read_only': 1,
+							},
+							{
+								'label': "Dispatch Qty",
+								'fieldname': 'qty',
+								'fieldtype': 'Int',
+							},
+							{
+								'label': "Empty Bottles",
+								'fieldname': 'empty_qty',
+								'fieldtype': 'Int',
+							},
+							{
+								'label': "Payment Received",
+								'fieldname': 'received_amount',
+								'fieldtype': 'Currency',
+							},
+							{
+								'label': 'Mode of Payment',
+								'fieldname': 'mop',
+								'fieldtype': 'Data',
+								'read_only': 1
+							},
+							{
+								'label': "Accessories Sale",
+								'fieldname': 'accessories_sales',
+								'fieldtype': 'Currency',
+								'read_only': new_customer
+							},
+							
+							{
+								'label': "Fixed Deposit",
+								'fieldname': 'fixed_deposit',
+								'fieldtype': 'Currency',
+							},
 
-		                
-		            ],
-		            primary_action_label: 'Dispatch Order',
-		            primary_action: function (data) {
-		            	debugger;
-		            	if(data.qty > data.reg_qty){
-	            			frappe.msgprint("Qty cannot be exceed as Registered Qty in Agreement")
+							
+						],
+						primary_action_label: 'Dispatch Order',
+						primary_action: function (data) {
+							debugger;
+							if(data.qty > data.reg_qty){
+								frappe.msgprint("Qty cannot be exceed as Registered Qty in Agreement")
 
-		            	}else{
+							}else{
 
-			                frappe.call({
-								method: "erpfluid_addons.erpfluid_addons.page.dispatch.dispatch.create_dispatch",
-								args:{
-									data:{
-										"account_no": data.account_no,
-										"ticket_no": data.ticket_no,
-										"cust_type": data.cust_type,
-										"client_title": data.client_title,
-										"cell_no": data.cell_no,
-										"address": data.delivery_address,
-										"rate_unit": data.rate_unit,
-										"delivery_date": data.delivery_date,
-										"mop": data.mop,
-										"qty": data.qty,
-										"empty_bottles": data.empty_qty,
-										"accessories_sales": data.accessories_sales,
-										"received_payment": data.received_amount,
-										"fixed_deposit": data.fixed_deposit,
-										"reason": data.reason
+								frappe.call({
+									method: "erpfluid_addons.erpfluid_addons.page.dispatch.dispatch.create_dispatch",
+									args:{
+										data:{
+											"account_no": data.account_no,
+											"ticket_no": data.ticket_no,
+											"cust_type": data.cust_type,
+											"client_title": data.client_title,
+											"cell_no": data.cell_no,
+											"address": data.delivery_address,
+											"rate_unit": data.rate_unit,
+											"delivery_date": data.delivery_date,
+											"mop": data.mop,
+											"qty": data.qty,
+											"empty_bottles": data.empty_qty,
+											"accessories_sales": data.accessories_sales,
+											"received_payment": data.received_amount,
+											"fixed_deposit": data.fixed_deposit,
+											"reason": data.reason
+										}
+									},
+									freeze: true,
+									freeze_message: "Dispatch is being created, please wait...",
+									callback: (r) => {
+										debugger;
+										d.hide();
+
+										frappe.msgprint(`Dispatch Created : <a target="_blank" href="#Form/Dispatch/`+r.message+`">`+r.message+`</a>`)
+										frappe.si_list.table.bootstrapTable('load', frappe.si_list.setDTList(1, 10));
+										window.open("/printview?doctype=Dispatch&name="+r.message+"&trigger_print=1&format=Standard&no_letterhead=0&_lang=en")
+
 									}
-								},
-								freeze: true,
-								freeze_message: "Dispatch is being created, please wait...",
-								callback: (r) => {
-									debugger;
-									d.hide();
+								})
 
-									frappe.msgprint(`Dispatch Created : <a target="_blank" href="#Form/Dispatch/`+r.message+`">`+r.message+`</a>`)
-									frappe.si_list.table.bootstrapTable('load', frappe.si_list.setDTList(1, 10));
-									window.open("/printview?doctype=Dispatch&name="+r.message+"&trigger_print=1&format=Standard&no_letterhead=0&_lang=en")
-
-								}
-							})
-
-		            	}
+							}
 
 
-		            }
-		        });
+						}
+					});
 
-		        d.set_value("account_no", row.account_no)
-		        d.set_value("ticket_no", row.ticket_no)
-				d.set_value("cust_type", row.cust_type)
-				d.set_value("client_title", row.client_title)
-				d.set_value("cell_no", row.cell_no)
-				d.set_value("delivery_address", row.delivery_address)
-				d.set_value("rate_unit", row.rate_unit)
-				d.set_value("delivery_date", row.delivery_date)
-				d.set_value("mop", row.mop)
-				d.set_value('reg_qty',row.reg_qty)
-				d.set_value("qty", row.qty)
-				d.set_value("received_amount", row.qty*row.rate_unit)
-				d.set_value("accessories_sales",0)
-				d.set_value("fixed_deposit",0)
+					d.set_value("account_no", row.account_no)
+					d.set_value("ticket_no", row.ticket_no)
+					d.set_value("cust_type", row.cust_type)
+					d.set_value("client_title", row.client_title)
+					d.set_value("cell_no", row.cell_no)
+					d.set_value("delivery_address", row.delivery_address)
+					d.set_value("rate_unit", row.rate_unit)
+					d.set_value("delivery_date", row.delivery_date)
+					d.set_value("mop", row.mop)
+					d.set_value('reg_qty',row.reg_qty)
+					d.set_value("qty", row.qty)
+					d.set_value("received_amount", row.qty*row.rate_unit)
+					d.set_value("accessories_sales",0)
+					d.set_value("fixed_deposit",0)
 
-				d.show();
+					d.show();
+				}
+				else if(field == 'checkin'){
+					const options = {
+						enableHighAccuracy: true,
+						timeout: 5000,
+						maximumAge: 0
+					};
+
+					function success(pos) {
+						const crd = pos.coords;
+
+						console.log('Your checkin current position is:');
+						console.log(`Latitude : ${crd.latitude}`);
+						console.log(`Longitude: ${crd.longitude}`);
+						console.log(`More or less ${crd.accuracy} meters.`);
+					}
+
+					function error(err) {
+						console.warn(`ERROR(${err.code}): ${err.message}`);
+					}
+
+					navigator.geolocation.getCurrentPosition(success, error, options);
+				}
+				else if(field == 'checkout'){
+					const options = {
+						enableHighAccuracy: true,
+						timeout: 5000,
+						maximumAge: 0
+					};
+
+					function success(pos) {
+						const crd = pos.coords;
+
+						console.log('Your checkout current position is:');
+						console.log(`Latitude : ${crd.latitude}`);
+						console.log(`Longitude: ${crd.longitude}`);
+						console.log(`More or less ${crd.accuracy} meters.`);
+					}
+
+					function error(err) {
+						console.warn(`ERROR(${err.code}): ${err.message}`);
+					}
+
+					navigator.geolocation.getCurrentPosition(success, error, options);
+
+				}
 			}
 
 		})
@@ -326,6 +373,8 @@ frappe.si_list = {
 						"delivery_date": v.delivery_date,
 						"mop": v.mode_of_payments,
 						"qty": v.reg_qty,
+						"checkin": "<a class='btn btn-primary inline_checkin'>Checkin</a>",
+						"checkout": "<a class='btn btn-primary inline_checkout'>Checkout</a>",
 						"dispatch": "<a class='btn btn-primary inline_dispatch'>DISPATCH</a>",
 						"account_no": v.account_no,
 						"reg_qty": v.reg_qty,
