@@ -88,7 +88,7 @@ def update_trip(ticket_no=None):
         trip_doc = frappe.get_doc("Trip", trip[0].name)
         for t in trip_doc.trip_details:
             t.stop_time = frappe.utils.nowtime()
-        trip_doc.save(ignore_permission=True)
+        trip_doc.save(ignore_permissions=True)
         frappe.db.commit()
 
 
