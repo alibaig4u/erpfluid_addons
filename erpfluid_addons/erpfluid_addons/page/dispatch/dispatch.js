@@ -304,6 +304,7 @@ frappe.si_list = {
 						console.log(`Latitude : ${crd.latitude}`);
 						console.log(`Longitude: ${crd.longitude}`);
 						console.log(`More or less ${crd.accuracy} meters.`);
+						// var destAddress = new google.maps.LatLng(crd.latitude, crd.longitude);
 						let origin = ""
 						let destination = ""
 						frappe.call({
@@ -321,6 +322,9 @@ frappe.si_list = {
 							callback: (r)=>{
 								if (r.message == "Existing Trip Already Found."){
 									frappe.msgprint(r.message)
+								}
+								else{
+									frappe.msgprint("Checkin Added")
 								}
 							}
 
