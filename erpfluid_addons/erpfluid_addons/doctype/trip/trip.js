@@ -21,10 +21,10 @@ frappe.ui.form.on('Trip', {
                 }
             });
         }
-        frappe.model.set_value(frm.doc.doctype, frm.doc.name, "user_detail", frappe.session.user);
-        cur_frm.refresh_field("user_detail");
-        frappe.model.set_value(frm.doc.doctype, frm.doc.name, "date", frappe.datetime.get_today());
-        cur_frm.refresh_field("date");
+        // frappe.model.set_value(frm.doc.doctype, frm.doc.name, "user_detail", frappe.session.user);
+        // cur_frm.refresh_field("user_detail");
+        // frappe.model.set_value(frm.doc.doctype, frm.doc.name, "date", frappe.datetime.get_today());
+        // cur_frm.refresh_field("date");
 
     },
     refresh: function(frm) {
