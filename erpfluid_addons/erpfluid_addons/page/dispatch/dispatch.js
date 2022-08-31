@@ -304,6 +304,25 @@ frappe.si_list = {
 						console.log(`Latitude : ${crd.latitude}`);
 						console.log(`Longitude: ${crd.longitude}`);
 						console.log(`More or less ${crd.accuracy} meters.`);
+						let origin = ""
+						let destination = ""
+						frappe.call({
+							method: "erpfluid_addons.erpfluid_addons.page.dispatch.dispatch.create_checkin",
+							args: {
+								data:{
+									"origin":origin,
+									"destination":destination,
+									"date": frappe.datetime.now_date(),
+									"start_time": frappe.datetime.now_time(),
+									"ticket_no": row.ticket_no
+								}
+							},
+							callback: (r)=>{
+								debugger;
+								r
+							}
+
+						})
 					}
 
 					function error(err) {
@@ -312,29 +331,29 @@ frappe.si_list = {
 
 					navigator.geolocation.getCurrentPosition(success, error, options);
 				}
-				else if(field == 'checkout'){
-					const options = {
-						enableHighAccuracy: true,
-						timeout: 5000,
-						maximumAge: 0
-					};
+				// else if(field == 'checkout'){
+				// 	const options = {
+				// 		enableHighAccuracy: true,
+				// 		timeout: 5000,
+				// 		maximumAge: 0
+				// 	};
 
-					function success(pos) {
-						const crd = pos.coords;
+				// 	function success(pos) {
+				// 		const crd = pos.coords;
 
-						console.log('Your checkout current position is:');
-						console.log(`Latitude : ${crd.latitude}`);
-						console.log(`Longitude: ${crd.longitude}`);
-						console.log(`More or less ${crd.accuracy} meters.`);
-					}
+				// 		console.log('Your checkout current position is:');
+				// 		console.log(`Latitude : ${crd.latitude}`);
+				// 		console.log(`Longitude: ${crd.longitude}`);
+				// 		console.log(`More or less ${crd.accuracy} meters.`);
+				// 	}
 
-					function error(err) {
-						console.warn(`ERROR(${err.code}): ${err.message}`);
-					}
+				// 	function error(err) {
+				// 		console.warn(`ERROR(${err.code}): ${err.message}`);
+				// 	}
 
-					navigator.geolocation.getCurrentPosition(success, error, options);
+				// 	navigator.geolocation.getCurrentPosition(success, error, options);
 
-				}
+				// }
 			}
 
 		})
@@ -374,7 +393,6 @@ frappe.si_list = {
 						"mop": v.mode_of_payments,
 						"qty": v.reg_qty,
 						"checkin": "<a class='btn btn-primary inline_checkin'>Checkin</a>",
-						"checkout": "<a class='btn btn-primary inline_checkout'>Checkout</a>",
 						"dispatch": "<a class='btn btn-primary inline_dispatch'>DISPATCH</a>",
 						"account_no": v.account_no,
 						"reg_qty": v.reg_qty,
