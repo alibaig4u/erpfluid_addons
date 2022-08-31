@@ -90,8 +90,8 @@ def create_checkin(data=None):
     trip_doc.dispatch = data.get('dispatch')
     trip_doc.ticket_no = data.get('ticket_no')
     trip_doc.append("trip_details",{
-        "start_point": data.get('destination')
-        "stop_point": data.get('origin')
+        "start_point": data.get('destination'),
+        "stop_point": data.get('origin'),
         "start_time": data.get('start_time')
         })
     
