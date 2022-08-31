@@ -310,6 +310,7 @@ frappe.si_list = {
 							method: "erpfluid_addons.erpfluid_addons.page.dispatch.dispatch.create_checkin",
 							args: {
 								data:{
+									"user": frappe.user.name,
 									"origin":origin,
 									"destination":destination,
 									"date": frappe.datetime.now_date(),

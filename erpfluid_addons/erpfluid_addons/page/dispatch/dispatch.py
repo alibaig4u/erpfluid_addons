@@ -89,6 +89,7 @@ def update_trip(ticket_no=None):
         for t in trip_doc.trip_details:
             t.stop_time = frappe.utils.nowtime()
         trip_doc.save(ignore_permission=True)
+        frappe.db.commit()
 
 
 @frappe.whitelist()
@@ -98,6 +99,7 @@ def create_checkin(data=None):
         ignore_permissions=True)
     if len(trips) == 0:
         trip_doc = frappe.new_doc("Trip")
+        trip_doc.user_detail = data.get('user')
         trip_doc.date = data.get('date')
         trip_doc.origin = data.get('origin')
         trip_doc.destination = data.get('destination')
