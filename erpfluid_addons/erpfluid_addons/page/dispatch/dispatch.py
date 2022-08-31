@@ -78,26 +78,42 @@ def create_dispatch(data=None):
     frappe.db.set_value("Delivery Ticket", data.get('ticket_no'), 'status', 'Dispatched')
     frappe.db.set_value("Agreement Form", data.get('account_no'), 'new_customer', 'No')
     frappe.db.commit()
+    update_trip(data.get('ticket_no'))
     return dispatch_doc.name
+
+@frappe.whitelist()
+def update_trip(ticket_no=None):
+    trip = frappe.get_all("Trip",filters={"ticket_no":ticket_no})
+    if len(trip) > 0:
+        trip_doc = frappe.get_doc("Trip", trip[0].name)
+        for t in trip_doc.trip_details:
+            t.stop_time = frappe.utils.nowtime()
+        trip_doc.save(ignore_permission=True)
+
 
 @frappe.whitelist()
 def create_checkin(data=None):
     data = json.loads(data)
-    trip_doc = frappe.new_doc("Trip")
-    trip_doc.date = data.get('date')
-    trip_doc.origin = data.get('origin')
-    trip_doc.destination = data.get('destination')
-    trip_doc.dispatch = data.get('dispatch')
-    trip_doc.ticket_no = data.get('ticket_no')
-    trip_doc.append("trip_details",{
-        "start_point": data.get('destination'),
-        "stop_point": data.get('origin'),
-        "start_time": data.get('start_time')
-        })
-    
-    trip_doc.insert(ignore_permissions=True)
-    frappe.db.commit()
-    return trip_doc.name
+    trips = frappe.get_list("Trip", filters={"ticket_no":data.get('ticket_no')}, 
+        ignore_permissions=True)
+    if len(trips) == 0:
+        trip_doc = frappe.new_doc("Trip")
+        trip_doc.date = data.get('date')
+        trip_doc.origin = data.get('origin')
+        trip_doc.destination = data.get('destination')
+        trip_doc.dispatch = data.get('dispatch')
+        trip_doc.ticket_no = data.get('ticket_no')
+        trip_doc.append("trip_details",{
+            "start_point": data.get('destination'),
+            "stop_point": data.get('origin'),
+            "start_time": data.get('start_time')
+            })
+        
+        trip_doc.insert(ignore_permissions=True)
+        frappe.db.commit()
+        return trip_doc.name
+    else:
+        return "Existing Trip Already Found."
 
 @frappe.whitelist()
 def update_user_data(form,lat,long):

@@ -318,8 +318,9 @@ frappe.si_list = {
 								}
 							},
 							callback: (r)=>{
-								debugger;
-								r
+								if (r.message == "Existing Trip Already Found."){
+									frappe.msgprint(r.message)
+								}
 							}
 
 						})
