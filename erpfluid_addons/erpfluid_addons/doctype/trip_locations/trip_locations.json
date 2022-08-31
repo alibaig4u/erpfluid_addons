@@ -1,0 +1,59 @@
+{
+ "creation": "2019-12-10 06:59:36.303143",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "start_point",
+  "stop_point",
+  "start_time",
+  "stop_time",
+  "total_time",
+  "activity"
+ ],
+ "fields": [
+  {
+   "fieldname": "start_point",
+   "fieldtype": "Read Only",
+   "in_list_view": 1,
+   "label": "Start Point"
+  },
+  {
+   "fieldname": "stop_point",
+   "fieldtype": "Read Only",
+   "in_list_view": 1,
+   "label": "Stop Point"
+  },
+  {
+   "fieldname": "start_time",
+   "fieldtype": "Read Only",
+   "label": "Start Time"
+  },
+  {
+   "fieldname": "stop_time",
+   "fieldtype": "Read Only",
+   "label": "Stop time"
+  },
+  {
+   "fieldname": "total_time",
+   "fieldtype": "Read Only",
+   "in_list_view": 1,
+   "label": "Total Time"
+  },
+  {
+   "fieldname": "activity",
+   "fieldtype": "Data",
+   "label": "Activity"
+  }
+ ],
+ "istable": 1,
+ "modified": "2020-09-03 10:46:25.096963",
+ "modified_by": "Administrator",
+ "module": "Erpfluid Addons",
+ "name": "Trip Locations",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "ASC",
+ "track_changes": 1
+}
